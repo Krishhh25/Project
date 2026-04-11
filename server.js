@@ -29,7 +29,7 @@ app.post('/feedback', async (req, res) => {
 // ROUTE 2: Get all feedback to show in table
 app.get('/feedback', async (req, res) => {
     try {
-        // Sorting by ID so newest entries show up first
+        // We use 'id' to be safe
         const result = await pool.query("SELECT * FROM bus_feedback ORDER BY id DESC");
         res.json(result.rows);
     } catch (err) {
