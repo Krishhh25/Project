@@ -1,0 +1,195 @@
+/* --- Global Styles --- */
+:root {
+    --primary-color: #0056b3; /* Professional Trust Blue */
+    --accent-color: #28a745;  /* Success Green */
+    --bg-color: #f4f7f6;
+    --text-color: #333;
+    --card-bg: #ffffff;
+    --border-color: #e1e4e8;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* --- Header --- */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.header-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 0.5rem;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+header p {
+    margin: 0;
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+/* --- Main Layout --- */
+.main-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    display: grid;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .main-container {
+        grid-template-columns: 1fr 2fr; /* Form is smaller, Table is wider */
+    }
+}
+
+/* --- Commmon Component: Card --- */
+.card {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.card h2 {
+    margin-top: 0;
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.card h2 i {
+    margin-right: 8px;
+}
+
+/* --- Form Styling --- */
+.form-section {
+    position: sticky;
+    top: 2rem; /* Sticks the form on scroll on larger screens */
+    height: fit-content;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.input-icon, .textarea-icon {
+    position: absolute;
+    left: 12px;
+    color: #888;
+}
+
+.input-icon {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.textarea-icon {
+    top: 15px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 12px 12px 12px 40px; /* space for icon */
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+}
+
+textarea {
+    resize: vertical; /* Allow vertical resizing only */
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+button[type="submit"]:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+button[type="submit"]:active {
+    transform: scale(0.98); /* Subtle 'click' effect */
+}
+
+/* --- Table Styling --- */
+.table-wrapper {
+    overflow-x: auto; /* Handles responsiveness */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 500px;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    background-color: #f8f9fa;
+    color: #555;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+th i {
+    margin-right: 5px;
+    color: var(--primary-color);
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr:hover {
+    background-color: #fcfcfc;
+}
