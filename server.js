@@ -8,7 +8,11 @@ app.use(express.json());
 
 // Database Connection
 const pool = new Pool({
-    connectionString: "postgresql://postgres:deadaf2504200@db.xognnrbfruoqsoodkwmf.supabase.co:5432/postgres",
+    // Use the Transaction Pooler string here
+    connectionString: "postgresql://postgres.xognnrbfruoqsoodkwmf:[YOUR-PASSWORD]@aws-1-ap-northeast-1.pooler.supabase.com:6543/postgres",
+    ssl: {
+        rejectUnauthorized: false // This allows Render to connect securely
+    }
 });
 
 // ROUTE 1: Save new feedback
