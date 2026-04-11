@@ -1,192 +1,104 @@
-/* --- 1. THE FOUNDATION --- */
-* {
-    box-sizing: border-box; /* Crucial: padding won't increase width */
-}
+/* --- Global Reset --- */
+* { box-sizing: border-box; }
 
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: hidden; /* Stops horizontal scrolling */
     background-color: #f0f2f5;
     color: #1a1a1a;
-    font-family: 'Segoe UI', Roboto, sans-serif;
-    -webkit-font-smoothing: antialiased;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 :root {
-    --primary-maroon: #800000;
-    --pune-gold: #ffd700;
-    --success-green: #28a745;
-    --border-grey: #d1d5db;
+    --maroon: #800000;
+    --gold: #ffd700;
+    --green: #28a745;
 }
 
-/* --- 2. HEADER: Edge-to-Edge --- */
+/* --- Header --- */
 header {
-    background-color: var(--primary-maroon);
+    background-color: var(--maroon);
     color: white;
     text-align: center;
     padding: 2rem 1rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    border-bottom: 5px solid var(--pune-gold);
+    border-bottom: 5px solid var(--gold);
     width: 100%;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 1.8rem;
-    font-weight: 800;
-    text-transform: uppercase;
-}
+header h1 { margin: 0; font-size: 2rem; text-transform: uppercase; }
+header p { margin: 5px 0 0; opacity: 0.9; }
 
-header p {
-    margin: 8px 0 0;
-    font-size: 0.95rem;
-    opacity: 0.9;
-}
-
-/* --- 3. LAYOUT: The Mobile Fix --- */
-/* --- Updated Main Layout --- */
+/* --- MAIN LAYOUT (The PC vs Mobile Fix) --- */
 .main-container {
-    width: 100%;
     max-width: 1200px;
-    margin: 1rem auto;
-    padding: 0 15px;
-    display: flex; /* Using Flexbox is more reliable for stacking */
-    flex-direction: column; /* FORCES STACK: Form on top, Table below */
-    gap: 1.5rem;
-    box-sizing: border-box;
+    margin: 2rem auto;
+    padding: 0 20px;
+    display: grid;
+    gap: 2rem;
+    /* Default: Stacked (Mobile) */
+    grid-template-columns: 1fr; 
 }
 
-/* SIDE-BY-SIDE ONLY FOR LARGE SCREENS (Laptops/PC) */
-@media (min-width: 901px) {
+/* Desktop Fix: Side-by-Side when screen is wider than 900px */
+@media (min-width: 900px) {
     .main-container {
-        flex-direction: row; /* Side-by-side for big screens */
-        padding: 0 30px;
-    }
-
-    .form-section {
-        width: 380px; /* Fixed width for form on desktop */
-        flex-shrink: 0;
-    }
-
-    .table-section {
-        flex-grow: 1; /* Table takes rest of space */
+        grid-template-columns: 400px 1fr; 
     }
 }
 
-/* TABLET & MOBILE FIX (Anything below 900px) */
-@media (max-width: 900px) {
-    .main-container {
-        flex-direction: column; /* Forces vertical stack */
-    }
-
-    .card {
-        width: 100% !important;
-        margin: 0 auto;
-    }
-    
-    header h1 {
-        font-size: 1.5rem;
-    }
-}
-
-/* --- 4. CARDS & FORMS --- */
+/* --- Cards --- */
 .card {
-    background-color: #ffffff;
-    padding: 1.5rem;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    width: 100%;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .card h2 {
+    color: var(--maroon);
     margin-top: 0;
-    font-size: 1.25rem;
-    color: var(--primary-maroon);
-    border-bottom: 2px solid #f0f0f0;
-    padding-bottom: 12px;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
 }
 
-.input-group {
-    margin-bottom: 1.2rem;
-}
-
-input[type="text"],
-input[type="number"],
-textarea {
+/* --- Form --- */
+input, textarea {
     width: 100%;
-    padding: 14px;
-    border: 2px solid var(--border-grey);
-    border-radius: 12px;
-    font-size: 16px; /* Stops iPhone zoom */
-    background-color: #f9fafb;
-    transition: all 0.2s ease;
+    padding: 12px;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
 }
 
-input:focus, textarea:focus {
-    outline: none;
-    border-color: var(--primary-maroon);
-    background-color: #fff;
-}
-
-button[type="submit"] {
+button {
     width: 100%;
-    padding: 16px;
-    background-color: var(--success-green);
+    padding: 15px;
+    background: var(--green);
     color: white;
     border: none;
-    border-radius: 12px;
-    font-size: 1.1rem;
-    font-weight: 700;
+    border-radius: 8px;
+    font-weight: bold;
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
 }
 
-/* --- 5. TABLE: Scrollable on Mobile --- */
+/* --- Table --- */
 .table-wrapper {
-    overflow-x: auto; /* Allows swiping left-to-right on table */
-    border-radius: 12px;
-    border: 1px solid var(--border-grey);
-    background: white;
-    width: 100%;
+    overflow-x: auto;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 500px; /* Prevents text squishing */
 }
 
 th, td {
-    padding: 14px;
+    padding: 12px;
     text-align: left;
-    border-bottom: 1px solid #edf2f7;
+    border-bottom: 1px solid #ddd;
 }
 
-th {
-    background-color: #f8fafc;
-    color: #64748b;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    font-weight: 700;
-}
+th { background: #f8f8f8; font-size: 0.9rem; color: #666; }
 
-.feedback-cell {
-    word-break: break-word;
-    max-width: 300px;
-}
-
-/* --- 6. EXTRA SMALL SCREEN POLISH --- */
-@media (max-width: 480px) {
-    header h1 { font-size: 1.5rem; }
-    .card { padding: 1.2rem; }
-    .main-container { padding: 0 10px; }
-}
+.feedback-cell { word-break: break-word; }
