@@ -17,23 +17,22 @@ app.post('/feedback', async (req, res) => {
     try {
         const result = await pool.query(
             "INSERT INTO bus_feedback (name, age, route, feedback) VALUES ($1, $2, $3, $4) RETURNING *",
-            [name, age, route, feedback]
+            [name, parseInt(age), String(route), feedback]
         );
         res.status(200).json(result.rows[0]);
     } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: "Database error" });
+        console.error("DB ERROR LOG:", err.message);
+        res.status(500).json({ error: err.message });
     }
 });
 
-// ROUTE 2: Get all feedback to show in table
+// ROUTE 2: Get all feedback
 app.get('/feedback', async (req, res) => {
     try {
-        // We use 'id' to be safe
         const result = await pool.query("SELECT * FROM bus_feedback ORDER BY id DESC");
         res.json(result.rows);
     } catch (err) {
-        console.error(err);
+        console.error("GET ERROR:", err.message);
         res.status(500).json({ error: "Server Error" });
     }
 });
