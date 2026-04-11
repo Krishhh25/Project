@@ -1,9 +1,13 @@
 /* --- Global Reset --- */
+* {
+    box-sizing: border-box; /* This is the most important fix for mobile */
+}
+
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: hidden; /* Prevents the horizontal "wobble" on mobile */
+    overflow-x: hidden; /* Stops the horizontal 'wobble' */
     background-color: #f0f2f5;
     color: #1a1a1a;
     font-family: 'Segoe UI', Roboto, sans-serif;
@@ -22,11 +26,11 @@ header {
     background-color: var(--primary-maroon);
     color: white;
     text-align: center;
-    padding: 2.5rem 1rem;
+    padding: 2rem 1rem;
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     border-bottom: 5px solid var(--pune-gold);
     width: 100%;
-    box-sizing: border-box;
+    display: block;
 }
 
 header h1 {
@@ -39,19 +43,19 @@ header h1 {
 
 header p {
     margin: 8px 0 0;
-    font-size: 0.9rem;
-    opacity: 0.9;
+    font-size: 0.95rem;
+    opacity: 0.95;
 }
 
 /* --- Main Layout --- */
 .main-container {
+    width: 100%;
     max-width: 1100px;
     margin: 1.5rem auto;
     padding: 0 15px;
     display: grid;
     gap: 1.5rem;
     grid-template-columns: 1fr; /* Stacked for mobile */
-    box-sizing: border-box;
 }
 
 /* Side-by-Side for Desktop (Tablets/PC) */
@@ -68,12 +72,12 @@ header p {
     padding: 1.5rem;
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    box-sizing: border-box;
+    width: 100%; /* Ensures cards don't overflow */
 }
 
 .card h2 {
     margin-top: 0;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     color: var(--primary-maroon);
     border-bottom: 2px solid #f0f0f0;
     padding-bottom: 12px;
@@ -95,16 +99,16 @@ textarea {
     padding: 14px;
     border: 2px solid var(--border-grey);
     border-radius: 12px;
-    font-size: 16px; /* Best for mobile inputs */
+    font-size: 16px; /* Essential to prevent iPhone auto-zoom */
     background-color: #f9fafb;
-    box-sizing: border-box;
-    transition: border-color 0.2s;
+    transition: all 0.2s ease;
 }
 
 input:focus, textarea:focus {
     outline: none;
     border-color: var(--primary-maroon);
     background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(128, 0, 0, 0.05);
 }
 
 button[type="submit"] {
@@ -121,7 +125,6 @@ button[type="submit"] {
     justify-content: center;
     align-items: center;
     gap: 10px;
-    transition: background 0.2s;
 }
 
 button[type="submit"]:active {
@@ -130,17 +133,17 @@ button[type="submit"]:active {
 
 /* --- Table Styling (Mobile Swipe Friendly) --- */
 .table-wrapper {
-    overflow-x: auto;
+    overflow-x: auto; /* This allows the side-swipe */
     border-radius: 12px;
     border: 1px solid var(--border-grey);
     background: white;
-    -webkit-overflow-scrolling: touch;
+    width: 100%;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 500px; /* Forces table to be swipeable on small screens */
+    min-width: 500px; /* This ensures the table doesn't get squished */
 }
 
 th, td {
@@ -157,17 +160,15 @@ th {
     font-weight: 700;
 }
 
-tbody tr:hover {
-    background-color: #fff9f9;
-}
-
 .feedback-cell {
     word-break: break-word;
     max-width: 300px;
 }
 
-/* --- Extra Tweak for very small phones --- */
-@media (max-width: 400px) {
-    header h1 { font-size: 1.4rem; }
-    .card { padding: 1rem; }
+/* --- Mobile Fix for very small screens --- */
+@media (max-width: 450px) {
+    header h1 { font-size: 1.5rem; }
+    header p { font-size: 0.85rem; }
+    .card { padding: 1.2rem; }
+    .main-container { margin: 1rem auto; }
 }
