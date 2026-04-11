@@ -1,13 +1,13 @@
-/* --- Global Reset --- */
+/* --- 1. THE FOUNDATION --- */
 * {
-    box-sizing: border-box; /* This is the most important fix for mobile */
+    box-sizing: border-box; /* Crucial: padding won't increase width */
 }
 
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: hidden; /* Stops the horizontal 'wobble' */
+    overflow-x: hidden; /* Stops horizontal scrolling */
     background-color: #f0f2f5;
     color: #1a1a1a;
     font-family: 'Segoe UI', Roboto, sans-serif;
@@ -21,7 +21,7 @@ html, body {
     --border-grey: #d1d5db;
 }
 
-/* --- Header: Fixed to be edge-to-edge --- */
+/* --- 2. HEADER: Edge-to-Edge --- */
 header {
     background-color: var(--primary-maroon);
     color: white;
@@ -30,7 +30,6 @@ header {
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     border-bottom: 5px solid var(--pune-gold);
     width: 100%;
-    display: block;
 }
 
 header h1 {
@@ -38,41 +37,41 @@ header h1 {
     font-size: 1.8rem;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
 header p {
     margin: 8px 0 0;
     font-size: 0.95rem;
-    opacity: 0.95;
+    opacity: 0.9;
 }
 
-/* --- Main Layout --- */
+/* --- 3. LAYOUT: The Mobile Fix --- */
 .main-container {
     width: 100%;
     max-width: 1100px;
-    margin: 1.5rem auto;
+    margin: 1rem auto;
     padding: 0 15px;
     display: grid;
     gap: 1.5rem;
-    grid-template-columns: 1fr; /* Stacked for mobile */
+    grid-template-columns: 1fr; /* FORCED STACK: Form on top, Table below */
 }
 
-/* Side-by-Side for Desktop (Tablets/PC) */
+/* SIDE-BY-SIDE ONLY ON LAPTOPS (Width > 900px) */
 @media (min-width: 900px) {
     .main-container {
         grid-template-columns: 380px 1fr;
         padding: 0 30px;
+        margin: 2rem auto;
     }
 }
 
-/* --- Component: Card --- */
+/* --- 4. CARDS & FORMS --- */
 .card {
     background-color: #ffffff;
     padding: 1.5rem;
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    width: 100%; /* Ensures cards don't overflow */
+    width: 100%;
 }
 
 .card h2 {
@@ -87,7 +86,6 @@ header p {
     gap: 10px;
 }
 
-/* --- Form Styling (Mobile Optimized) --- */
 .input-group {
     margin-bottom: 1.2rem;
 }
@@ -99,7 +97,7 @@ textarea {
     padding: 14px;
     border: 2px solid var(--border-grey);
     border-radius: 12px;
-    font-size: 16px; /* Essential to prevent iPhone auto-zoom */
+    font-size: 16px; /* Stops iPhone zoom */
     background-color: #f9fafb;
     transition: all 0.2s ease;
 }
@@ -108,7 +106,6 @@ input:focus, textarea:focus {
     outline: none;
     border-color: var(--primary-maroon);
     background-color: #fff;
-    box-shadow: 0 0 0 4px rgba(128, 0, 0, 0.05);
 }
 
 button[type="submit"] {
@@ -127,13 +124,9 @@ button[type="submit"] {
     gap: 10px;
 }
 
-button[type="submit"]:active {
-    transform: scale(0.98);
-}
-
-/* --- Table Styling (Mobile Swipe Friendly) --- */
+/* --- 5. TABLE: Scrollable on Mobile --- */
 .table-wrapper {
-    overflow-x: auto; /* This allows the side-swipe */
+    overflow-x: auto; /* Allows swiping left-to-right on table */
     border-radius: 12px;
     border: 1px solid var(--border-grey);
     background: white;
@@ -143,7 +136,7 @@ button[type="submit"]:active {
 table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 500px; /* This ensures the table doesn't get squished */
+    min-width: 500px; /* Prevents text squishing */
 }
 
 th, td {
@@ -165,10 +158,9 @@ th {
     max-width: 300px;
 }
 
-/* --- Mobile Fix for very small screens --- */
-@media (max-width: 450px) {
+/* --- 6. EXTRA SMALL SCREEN POLISH --- */
+@media (max-width: 480px) {
     header h1 { font-size: 1.5rem; }
-    header p { font-size: 0.85rem; }
     .card { padding: 1.2rem; }
-    .main-container { margin: 1rem auto; }
+    .main-container { padding: 0 10px; }
 }
