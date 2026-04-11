@@ -1,223 +1,173 @@
-/* --- Global Styles --- */
-:root {
-    --primary-color: #800000; /* Pune Bus Maroon */
-    --accent-color: #28a745;  /* Success Green */
-    --gold-accent: #ffd700;   /* Pune Bus Gold */
-    --bg-color: #f4f7f6;
-    --text-color: #333;
-    --card-bg: #ffffff;
-    --border-color: #e1e4e8;
-}
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+/* --- Global Reset --- */
+html, body {
     margin: 0;
     padding: 0;
-    line-height: 1.6;
+    width: 100%;
+    overflow-x: hidden; /* Prevents the horizontal "wobble" on mobile */
+    background-color: #f0f2f5;
+    color: #1a1a1a;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* --- Header --- */
+:root {
+    --primary-maroon: #800000;
+    --pune-gold: #ffd700;
+    --success-green: #28a745;
+    --border-grey: #d1d5db;
+}
+
+/* --- Header: Fixed to be edge-to-edge --- */
 header {
-    background-color: var(--primary-color);
+    background-color: var(--primary-maroon);
     color: white;
     text-align: center;
     padding: 2.5rem 1rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    border-bottom: 5px solid var(--gold-accent);
-}
-
-.header-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 0.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    border-bottom: 5px solid var(--pune-gold);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 header h1 {
     margin: 0;
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     font-weight: 800;
-    letter-spacing: -0.5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 header p {
-    margin: 0;
-    font-size: 1.1rem;
+    margin: 8px 0 0;
+    font-size: 0.9rem;
     opacity: 0.9;
 }
 
 /* --- Main Layout --- */
 .main-container {
     max-width: 1100px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+    margin: 1.5rem auto;
+    padding: 0 15px;
     display: grid;
-    gap: 2rem;
-    grid-template-columns: 1fr; /* Default to 1 column for mobile */
+    gap: 1.5rem;
+    grid-template-columns: 1fr; /* Stacked for mobile */
+    box-sizing: border-box;
 }
 
-/* Desktop Layout - Side by Side */
+/* Side-by-Side for Desktop (Tablets/PC) */
 @media (min-width: 900px) {
     .main-container {
-        grid-template-columns: 350px 1fr; 
+        grid-template-columns: 380px 1fr;
+        padding: 0 30px;
     }
 }
 
 /* --- Component: Card --- */
 .card {
-    background-color: var(--card-bg);
+    background-color: #ffffff;
     padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    height: fit-content;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    box-sizing: border-box;
 }
 
 .card h2 {
     margin-top: 0;
-    font-size: 1.3rem;
-    color: var(--primary-color);
-    border-bottom: 2px solid #eee;
-    padding-bottom: 10px;
+    font-size: 1.2rem;
+    color: var(--primary-maroon);
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 12px;
     margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-/* --- Form Styling --- */
-.form-section {
-    position: relative;
-}
-
-@media (min-width: 900px) {
-    .form-section {
-        position: sticky;
-        top: 2rem;
-    }
-}
-
+/* --- Form Styling (Mobile Optimized) --- */
 .input-group {
-    position: relative;
     margin-bottom: 1.2rem;
-}
-
-.input-icon, .textarea-icon {
-    position: absolute;
-    left: 14px;
-    color: #888;
-    z-index: 1;
-}
-
-.input-icon {
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.textarea-icon {
-    top: 15px;
 }
 
 input[type="text"],
 input[type="number"],
 textarea {
     width: 100%;
-    padding: 12px 12px 12px 42px; 
-    border: 2px solid var(--border-color);
-    border-radius: 8px;
-    font-size: 1rem;
+    padding: 14px;
+    border: 2px solid var(--border-grey);
+    border-radius: 12px;
+    font-size: 16px; /* Best for mobile inputs */
+    background-color: #f9fafb;
     box-sizing: border-box;
-    transition: all 0.2s ease;
+    transition: border-color 0.2s;
 }
 
 input:focus, textarea:focus {
     outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 4px rgba(128, 0, 0, 0.1);
+    border-color: var(--primary-maroon);
+    background-color: #fff;
 }
 
 button[type="submit"] {
     width: 100%;
-    padding: 14px;
-    background-color: var(--accent-color);
+    padding: 16px;
+    background-color: var(--success-green);
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 12px;
     font-size: 1.1rem;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.2s ease;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
+    transition: background 0.2s;
 }
 
-button[type="submit"]:hover {
-    background-color: #218838;
-    transform: translateY(-2px);
+button[type="submit"]:active {
+    transform: scale(0.98);
 }
 
-/* --- Table Styling --- */
+/* --- Table Styling (Mobile Swipe Friendly) --- */
 .table-wrapper {
     overflow-x: auto;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    border: 1px solid var(--border-grey);
+    background: white;
+    -webkit-overflow-scrolling: touch;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    background: white;
+    min-width: 500px; /* Forces table to be swipeable on small screens */
 }
 
 th, td {
-    padding: 1rem;
+    padding: 14px;
     text-align: left;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid #edf2f7;
 }
 
 th {
-    background-color: #f8f9fa;
-    color: #444;
+    background-color: #f8fafc;
+    color: #64748b;
+    font-size: 0.8rem;
     text-transform: uppercase;
-    font-size: 0.85rem;
     font-weight: 700;
-}
-
-th i {
-    margin-right: 5px;
-    color: var(--primary-color);
-}
-
-.feedback-cell {
-    min-width: 250px;
-    word-break: break-word;
 }
 
 tbody tr:hover {
     background-color: #fff9f9;
 }
 
-/* --- Mobile Specific Fixes --- */
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 1.6rem;
-    }
+.feedback-cell {
+    word-break: break-word;
+    max-width: 300px;
+}
 
-    .card {
-        padding: 1rem;
-    }
-
-    /* Prevents iOS zoom on input click */
-    input, textarea, button {
-        font-size: 16px;
-    }
-
-    th, td {
-        padding: 0.8rem;
-        font-size: 0.9rem;
-    }
+/* --- Extra Tweak for very small phones --- */
+@media (max-width: 400px) {
+    header h1 { font-size: 1.4rem; }
+    .card { padding: 1rem; }
 }
