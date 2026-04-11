@@ -9,7 +9,7 @@ app.use(express.json());
 // Database Connection
 const pool = new Pool({
     // Use the Transaction Pooler string here
-    connectionString: "postgresql://postgres.xognnrbfruoqsoodkwmf:[YOUR-PASSWORD]@aws-1-ap-northeast-1.pooler.supabase.com:6543/postgres",
+    connectionString: "postgresql://postgres.xognnrbfruoqsoodkwmf:deadaf2504200@aws-1-ap-northeast-1.pooler.supabase.com:6543/postgres",
     ssl: {
         rejectUnauthorized: false // This allows Render to connect securely
     }
