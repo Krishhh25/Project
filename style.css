@@ -189,7 +189,32 @@ th i {
 tbody tr:last-child td {
     border-bottom: none;
 }
+/* Mobile Styles */
+@media (max-width: 600px) {
+    .main-container {
+        padding: 10px;
+        flex-direction: column; /* Stacks form and table vertically */
+    }
 
+    .card {
+        margin-bottom: 20px;
+        width: 100%; /* Makes cards full width on mobile */
+    }
+
+    /* Force the table to be scrollable so it doesn't break the screen */
+    .table-wrapper {
+        overflow-x: auto;
+        display: block;
+    }
+
+    header h1 {
+        font-size: 1.5rem; /* Smaller text for smaller screens */
+    }
+
+    input, textarea, button {
+        font-size: 16px; /* Prevents iOS from zooming in on inputs */
+    }
+}
 tbody tr:hover {
     background-color: #fcfcfc;
 }
