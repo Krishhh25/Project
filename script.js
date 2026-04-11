@@ -44,7 +44,7 @@ form.addEventListener("submit", async function(e) {
     };
 
     try {
-        const response = await fetch('http://localhost:3000/feedback', {
+        const response = await fetch('https://project-n85r.onrender.com/feedback', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
