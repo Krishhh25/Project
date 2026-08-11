@@ -4,7 +4,7 @@ Tech Used:
 HTML, CSS, JavaScript, Node.js, Express, PostgreSQL (hosted on Supabase), Render, GitHub.
 
 What I learned while building this
-Building this feedback system was a massive reality check on how much actually goes into making a "simple" website work. Here’s a breakdown of what I picked up:
+Building this feedback system was how much actually goes into making a "simple" website work. Here’s a breakdown of what I learnt:
 
 1. The Full-Stack Flow
 I learned how the frontend (GitHub Pages), the backend (Node/Express on Render), and the database (Supabase) all communicate with each other. Setting up the API routes to fetch and send data was a bit difficult.
