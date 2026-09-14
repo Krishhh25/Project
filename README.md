@@ -16,4 +16,4 @@ I learned how to handle connection issues, such as IPv6 errors, by using connect
 I learned how to use Media Queries to stack my layout so the table doesn't disappear or look tiny on a phone. I also finally figured out the viewport meta tag, which fixed the weird zooming bugs I was seeing on mobile browsers.
 
 4. Hosting and Debugging
-Deploying to the cloud taught me about CORS and how to read server logs in Render to identify why my code was crashing. I realized that debugging is a huge part of the process when moving from local development to a live environment.
+Deploying to the cloud taught me about CORS and how to read server logs in Render to identify why my code was crashing. I realized that debugging is a huge part of the process when moving from local development to a live environment
