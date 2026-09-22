@@ -1,7 +1,6 @@
 #Project
 
-Tech Used:
-HTML, CSS, JavaScript, Node.js, Express, PostgreSQL (hosted on Supabase), Render, GitHub.
+
 
 What I learned while building this
 Building this feedback system was how much actually goes into making a "simple" website work. Here’s a breakdown of what I learnt:
